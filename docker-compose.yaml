@@ -1,0 +1,50 @@
+---
+    version: "2.1"
+    services:
+      backend-1:
+        build:
+          context: ./
+        container_name: librespeed-backend-1
+        environment:
+          - PUID=1000
+          - PGID=1000
+          - TZ=Europe/London
+          - PASSWORD=password
+          - MODE=backend
+          - WEBPORT=15560
+        ports: 
+          - 15560:15560
+        restart: unless-stopped
+      backend-2:
+        build:
+            context: ./
+        container_name: librespeed-backend-2
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/London
+            - PASSWORD=password
+            - MODE=backend
+            - WEBPORT=15561
+        ports: 
+            - 15561:15561
+        restart: unless-stopped
+      frontend:
+        build:
+            context: ./
+        container_name: librespeed-frontend
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/London
+            - PASSWORD=password
+            - MODE=frontend
+            - TELEMETRY=true
+            - ENABLE_ID_OBFUSCATION=true
+        ports:
+            - 80:80
+        volumes: 
+          - ./docker/servers-local.json:/servers.json
+        restart: unless-stopped
+
+    

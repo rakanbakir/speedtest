@@ -1,0 +1,19 @@
+
+[
+	{
+		"name": "Example server 1 (HTTP and HTTPS)",
+		"server" :"http://localhost:15560/",
+		"dlURL" :"garbage.php",
+		"ulURL" :"empty.php",
+		"pingURL" :"empty.php",
+		"getIpURL" :"getIP.php"
+	},
+	{
+		"name": "Example server 2 (HTTP and HTTPS)",
+		"server" :"http://localhost:15561/",
+		"dlURL" :"garbage.php",
+		"ulURL" :"empty.php",
+		"pingURL" :"empty.php",
+		"getIpURL" :"getIP.php"
+	}
+]
