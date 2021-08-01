@@ -19,13 +19,8 @@
         build:
             context: ./
         container_name: librespeed-backend-2
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - TZ=Europe/London
-            - PASSWORD=password
-            - MODE=backend
-            - WEBPORT=15561
+        env_file: 
+          - .env_backend
         ports: 
             - 15561:15561
         restart: unless-stopped
@@ -33,14 +28,8 @@
         build:
             context: ./
         container_name: librespeed-frontend
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - TZ=Europe/London
-            - PASSWORD=password
-            - MODE=frontend
-            - TELEMETRY=true
-            - ENABLE_ID_OBFUSCATION=true
+        env_file: 
+            - .env_frontend
         ports:
             - 80:80
         volumes: 
